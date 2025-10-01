@@ -1,5 +1,5 @@
 void matrixMultiplyNxN(int n, int matrix1[n][n], int matrix2[n][n], int newMatrix[n][n]){
-  int i;
+  65;7006;1c  int i;
   int j;
   int pos;
   for(i = 0; i < n; i++){
@@ -79,4 +79,13 @@ int isMatrixInRREF(int height, int width, int matrix[height][width], int isVerbo
     }
   }
   return 1;
+}
+void matirxMultiplyScalar(int height, int width int matrix[height][width], int scalar){
+  int i;
+  int j;
+  for(i = 0; i < height; i++){
+    for(j = 0; j < width; j++){
+      matrix[i][j] = matrix[i][j] * scalar;
+    }
+  }
 }

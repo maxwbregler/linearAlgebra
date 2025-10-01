@@ -1,5 +1,5 @@
 void matrixMultiplyNxN(int n, int matrix1[n][n], int matrix2[n][n], int newMatrix[n][n]){
-  65;7006;1c  int i;
+  int i;
   int j;
   int pos;
   for(i = 0; i < n; i++){
@@ -29,19 +29,19 @@ void matrixSubtractNxN(int n, int matrix1[n][n], int matrix2[n][n], int newMatri
     }
   }
 }
-int isMatrixInRREF(int height, int width, int matrix[height][width], int isVerbose){
-  int hasPivotOne[height];
+int isMatrixInRREF(int m, int n, int matrix[m][n], int isVerbose){
+  int hasPivotOne[m];
   int i, j, k, l;
-  for(i = 0; i < height; i++){
+  for(i = 0; i < m; i++){
     hasPivotOne[i] = 0;
   }
-  for(i = 0; i < height; i++){
-    for(j = 0; j < width; j++){
+  for(i = 0; i < m; i++){
+    for(j = 0; j < n; j++){
       if(matrix[i][j] != 0){
 	if(matrix[i][j] == 1){
 	  //pivot one
 	  hasPivotOne[i] = 1;
-	  for(k = 0; k < height; k++){
+	  for(k = 0; k < m; k++){
 	    if((k != i) && (matrix[k][j] != 0)){
 	      if(isVerbose == 1){
 		printf("Pivot column in column %d has nonzero values other than pivot one (row %d)\n", j+1, k+1);
@@ -58,7 +58,7 @@ int isMatrixInRREF(int height, int width, int matrix[height][width], int isVerbo
 		}
 		return 0;
 	      }
-	      for(l = 0; l < width; l++){
+	      for(l = 0; l < n; l++){
 		if((matrix[k][l] == 1) && (l >> j) && (i >> k)){
 		  if(isVerbose == 1){
 		    printf("Pivot one in row %d is further right than pivot one in row %d\n", k+1, i+1);
@@ -80,11 +80,11 @@ int isMatrixInRREF(int height, int width, int matrix[height][width], int isVerbo
   }
   return 1;
 }
-void matirxMultiplyScalar(int height, int width int matrix[height][width], int scalar){
+void matrixMultiplyScalar(int m, int n, int matrix[m][n], int scalar){
   int i;
   int j;
-  for(i = 0; i < height; i++){
-    for(j = 0; j < width; j++){
+  for(i = 0; i < m; i++){
+    for(j = 0; j < n; j++){
       matrix[i][j] = matrix[i][j] * scalar;
     }
   }
@@ -96,4 +96,14 @@ int dotProduct(int n, int vector1[n], int vector2[n]){
     dotProduct += (vector1[i] * vector2[i]);
   }
   return dotProduct;
+}
+void printMatrix(int m, int n, int matrix[m][n]){
+  int i;
+  int j;
+  for(i = 0; i < m; i++){
+    for(j = 0; j < n; j++){
+      printf("%d ", matrix[i][j]);
+    }
+    printf("\n");
+  }
 }

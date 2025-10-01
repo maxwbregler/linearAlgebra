@@ -29,7 +29,7 @@ void matrixSubtractNxN(int n, int matrix1[n][n], int matrix2[n][n], int newMatri
     }
   }
 }
-int isMatrixInRREF(int height, int width, int matrix[height][width]){
+int isMatrixInRREF(int height, int width, int matrix[height][width], int isVerbose){
   int hasPivotOne[height];
   int i, j, k, l;
   for(i = 0; i < height; i++){
@@ -43,7 +43,9 @@ int isMatrixInRREF(int height, int width, int matrix[height][width]){
 	  hasPivotOne[i] = 1;
 	  for(k = 0; k < height; k++){
 	    if((k != i) && (matrix[k][j] != 0)){
-	      printf("Pivot column in column %d has nonzero values other than pivot one (row %d)\n", j+1, k+1);
+	      if(isVerbose == 1){
+		printf("Pivot column in column %d has nonzero values other than pivot one (row %d)\n", j+1, k+1);
+	      }
 	      return 0;
 	    }
 	  }
@@ -51,12 +53,16 @@ int isMatrixInRREF(int height, int width, int matrix[height][width]){
 	  if(i > 0){
 	    for(k = 0; k < i; k++){
 	      if(hasPivotOne[k] == 0){
-		printf("Pivot one in row %d but not in row %d\n", i+1, k+1);
+		if(isVerbose == 1){
+		  printf("Pivot one in row %d but not in row %d\n", i+1, k+1);
+		}
 		return 0;
 	      }
 	      for(l = 0; l < width; l++){
 		if((matrix[k][l] == 1) && (l >> j) && (i >> k)){
-		  printf("Pivot one in row %d is further right than pivot one in row %d\n", k+1, i+1);
+		  if(isVerbose == 1){
+		    printf("Pivot one in row %d is further right than pivot one in row %d\n", k+1, i+1);
+		  }
 		  return 0;
 		}
 	      }

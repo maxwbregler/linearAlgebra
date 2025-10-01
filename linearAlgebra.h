@@ -89,3 +89,11 @@ void matirxMultiplyScalar(int height, int width int matrix[height][width], int s
     }
   }
 }
+int dotProduct(int n, int vector1[n], int vector2[n]){
+  int dotProduct = 0;
+  int i;
+  for(i = 0; i < n; i++){
+    dotProduct += (vector1[i] * vector2[i]);
+  }
+  return dotProduct;
+}
